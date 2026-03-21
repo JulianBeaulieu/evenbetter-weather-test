@@ -1,0 +1,12 @@
+{
+  "name": "evenbetter-weather-test",
+  "version": "1.0.0",
+  "description": "Text-only weather app for Even G2 glasses — test app for EvenBetter JS plugin system",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "echo 'Pre-built bundle in dist/index.js'"
+  },
+  "dependencies": {
+    "@evenrealities/even_hub_sdk": "^0.0.7"
+  }
+}
