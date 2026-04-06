@@ -14,12 +14,22 @@
   var DISPLAY_WIDTH = 640;
   var DISPLAY_HEIGHT = 400;
 
-  // Default city (can be changed via localStorage)
+  // Default city (overridden by localStorage if configured in settings)
   var DEFAULT_CITY = {
     name: 'New York',
     latitude: 40.7128,
     longitude: -74.0060
   };
+
+  function loadCity() {
+    var name = localStorage.getItem('city');
+    var lat = localStorage.getItem('latitude');
+    var lon = localStorage.getItem('longitude');
+    if (name && lat && lon) {
+      return { name: name, latitude: parseFloat(lat), longitude: parseFloat(lon) };
+    }
+    return DEFAULT_CITY;
+  }
 
   // ---------------------------------------------------------------------------
   // State
@@ -28,7 +38,7 @@
     screen: 0,       // 0=forecast, 1=now, 2=hourly
     startupDone: false,
     weather: null,
-    city: DEFAULT_CITY
+    city: loadCity()
   };
 
   var SCREENS = ['forecast', 'now', 'hourly'];
